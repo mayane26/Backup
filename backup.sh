@@ -51,17 +51,3 @@ elif [ "$BACKUP" == "$BACKUP_INC" ]; then
 else 
     echo "It failed, the option can not be recognized"
 fi
-
-#Second argument to delete the older files under X days
-CLEAN="$2"
-CLEAN_FULL="fullclean"
-CLEAN_INC="incclean"
-
-#TO DO, search how to delete directories and to not break the backups
-if [ "$CLEAN" == "$CLEAN_FULL" ]; then
-   find "$BACKUP_DIR" -type d -mtime +2 -exec rm -rf {} \;
-elif [ "$CLEAN" == "$CLEAN_INC" ]; then
-    find "$INC_BACKUP" -type d -mtime +3 -exec rm -rf  {} \;
-else
-    echo "It failed, the option can not be recognized"
-fi
